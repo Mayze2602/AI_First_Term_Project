@@ -40,7 +40,6 @@ def dijkstra_algorithm_search(graph, start, goal, step_by_step=False):
     current_node = start
     visited = set()
     while current_node != goal:
-        print("Current node: ", current_node)
         visited.add(current_node)
         destinations = graph[current_node]
         weight_to_current_node = shortest_path[current_node][1]
