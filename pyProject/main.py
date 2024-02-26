@@ -35,6 +35,7 @@ def main():
             if modo == 1:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
+                print("")
                 printRoute(execute_time(
                     breadth_first_search, graph, start, end))
             elif modo == 2:
