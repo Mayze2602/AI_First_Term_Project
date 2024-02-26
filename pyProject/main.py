@@ -16,8 +16,13 @@ def menu():
 
 
 def clear():
-    os.system('pause')
-    os.system('cls' if os.name == 'nt' else 'clear')
+    if os.name == 'nt':
+        os.system('pause')
+        os.system('cls')
+    else:
+        print("Presione enter para continuar...")
+        input()
+        os.system('clear')
 
 
 def main():
@@ -36,8 +41,9 @@ def main():
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
                 print("")
-                printRoute(execute_time(
-                    breadth_first_search, graph, start, end))
+                route, execTime = execute_time(
+                    breadth_first_search, graph, start, end)
+                printRoute(route)
             elif modo == 2:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
@@ -56,7 +62,9 @@ def main():
             if modo == 1:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
-                printRoute(execute_time(depth_first_search, graph, start, end))
+                route, execTime = execute_time(
+                    depth_first_search, graph, start, end)
+                printRoute(route)
             elif modo == 2:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
@@ -76,8 +84,9 @@ def main():
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
                 limit = int(input("Ingrese el límite: "))
-                printRoute(execute_time(
-                    limited_depth_search, graph, start, end, limit))
+                route, execTime = execute_time(
+                    limited_depth_search, graph, start, end, limit)
+                printRoute(route)
             elif modo == 2:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
@@ -98,7 +107,9 @@ def main():
             if modo == 1:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
-                printRoute(execute_time(iterative_depth, graph, start, end))
+                route, execTime = execute_time(
+                    iterative_depth, graph, start, end)
+                printRoute(route)
             elif modo == 2:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
@@ -117,8 +128,9 @@ def main():
             if modo == 1:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
-                printRoute(execute_time(
-                    dijkstra_algorithm_search, graph, start, end))
+                route, execTime = execute_time(
+                    dijkstra_algorithm_search, graph, start, end)
+                printRoute(route)
             elif modo == 2:
                 start = input("Ingrese el nodo de inicio: ")
                 end = input("Ingrese el nodo de destino: ")
