@@ -13,17 +13,17 @@ def iterative_depth(graph, start, goal):
             return path
     return None
 
-def dijkstra_algorithm_search(graphOG, start, end):
+def dijkstra_algorithm_search(graph, start, goal):
     start = start.lower()
-    end = end.lower()
-    graph=normalizeGraph(graphOG)
+    goal = goal.lower()
+    graph=normalizeGraph(graph)
     
-    if start not in graph or end not in graph:
+    if start not in graph or goal not in graph:
         return "El nodo de inicio o final no existe."
     shortest_path = {start: (None, 0)}
     current_node = start
     visited = set()
-    while current_node != end:
+    while current_node != goal:
         print("Current node: ", current_node)
         visited.add(current_node)
         destinations = graph[current_node]
