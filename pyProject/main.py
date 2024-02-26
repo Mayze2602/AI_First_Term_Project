@@ -3,6 +3,7 @@ from input_graph import G as graph
 from tools import printRoute, execute_time
 import os
 
+
 def menu():
     print("1. Búsqueda a lo ancho")
     print("2. Búsqueda por profundidad")
@@ -13,53 +14,117 @@ def menu():
     print("7. Salir")
     return int(input("Seleccione una opción: "))
 
+
 def clear():
     os.system('pause')
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
 def main():
     while True:
         opcion = menu()
+
         if opcion == 1:
             print("Búsqueda a lo ancho")
             print("<==============================================>")
-            start = input("Ingrese el nodo de inicio: ")
-            end = input("Ingrese el nodo de destino: ")
-            printRoute(execute_time(breadth_first_search, graph, start, end))
+            print("Modo:")
+            print("1. Directo")
+            print("2. Explicación paso a paso")
+            print("<==============================================>")
+            modo = int(input("Seleccione una opción: "))
+            if modo == 1:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                printRoute(execute_time(
+                    breadth_first_search, graph, start, end))
+            elif modo == 2:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                printRoute(breadth_first_search(graph, start, end, True))
             print("<==============================================>")
             clear()
+
         elif opcion == 2:
             print("Búsqueda por profundidad")
             print("<==============================================>")
-            start = input("Ingrese el nodo de inicio: ")
-            end = input("Ingrese el nodo de destino: ")
-            printRoute(execute_time(depth_first_search, graph, start, end))
+            print("Modo:")
+            print("1. Directo")
+            print("2. Explicación paso a paso")
+            print("<==============================================>")
+            modo = int(input("Seleccione una opción: "))
+            if modo == 1:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                printRoute(execute_time(depth_first_search, graph, start, end))
+            elif modo == 2:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                printRoute(depth_first_search(graph, start, end, True))
             print("<==============================================>")
             clear()
+
         elif opcion == 3:
             print("Búsqueda por profundidad con limite")
             print("<==============================================>")
-            start = input("Ingrese el nodo de inicio: ")
-            end = input("Ingrese el nodo de destino: ")
-            limit = int(input("Ingrese el límite: "))
-            printRoute(execute_time(limited_depth_search, graph, start, end, limit))
+            print("Modo:")
+            print("1. Directo")
+            print("2. Explicación paso a paso")
+            print("<==============================================>")
+            modo = int(input("Seleccione una opción: "))
+            if modo == 1:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                limit = int(input("Ingrese el límite: "))
+                printRoute(execute_time(
+                    limited_depth_search, graph, start, end, limit))
+            elif modo == 2:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                limit = int(input("Ingrese el límite: "))
+                printRoute(limited_depth_search(
+                    graph, start, end, limit, True))
             print("<==============================================>")
             clear()
+
         elif opcion == 4:
             print("Búsqueda por profundidad iterativa")
             print("<==============================================>")
-            start = input("Ingrese el nodo de inicio: ")
-            end = input("Ingrese el nodo de destino: ")
-            printRoute(execute_time(iterative_depth, graph, start, end))
+            print("Modo:")
+            print("1. Directo")
+            print("2. Explicación paso a paso")
+            print("<==============================================>")
+            modo = int(input("Seleccione una opción: "))
+            if modo == 1:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                printRoute(execute_time(iterative_depth, graph, start, end))
+            elif modo == 2:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                printRoute(iterative_depth(graph, start, end, True))
+            print("<==============================================>")
             clear()
+
         elif opcion == 5:
             print("Dikjstra")
             print("<==============================================>")
-            start = input("Ingrese el nodo de inicio: ")
-            end = input("Ingrese el nodo de destino: ")
-            printRoute(execute_time(dijkstra_algorithm_search, graph, start, end))
+            print("Modo:")
+            print("1. Directo")
+            print("2. Explicación paso a paso")
+            print("<==============================================>")
+            modo = int(input("Seleccione una opción: "))
+            if modo == 1:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                printRoute(execute_time(
+                    dijkstra_algorithm_search, graph, start, end))
+            elif modo == 2:
+                start = input("Ingrese el nodo de inicio: ")
+                end = input("Ingrese el nodo de destino: ")
+                printRoute(dijkstra_algorithm_search(graph, start, end, True))
             print("<==============================================>")
             clear()
+
         elif opcion == 6:
             print("Comparación de algoritmos")
             print("<==============================================>")
@@ -73,19 +138,22 @@ def main():
             print("<==============================================>")
             limit = int(input("Ingrese el límite: "))
             print("Búsqueda por profundidad con limite")
-            printRoute(execute_time(limited_depth_search, graph, start, end, limit))
+            printRoute(execute_time(
+                limited_depth_search, graph, start, end, limit))
             print("<==============================================>")
             print("Búsqueda por profundidad iterativa")
             printRoute(execute_time(iterative_depth, graph, start, end))
             print("<==============================================>")
             print("Dikjstra")
-            printRoute(execute_time(dijkstra_algorithm_search, graph, start, end))
+            printRoute(execute_time(
+                dijkstra_algorithm_search, graph, start, end))
             print("<==============================================>")
             clear()
         elif opcion == 7:
             break
         else:
             print("Opción no válida")
+
 
 if __name__ == "__main__":
     main()
