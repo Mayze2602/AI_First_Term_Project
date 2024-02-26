@@ -1,11 +1,3 @@
-'''
-Debe tener 1 menú de selección de algoritmos de búsqueda que permita elegir 1 sólo de manera individual y una opción que ejecuta todos a manera de comparación.
-El código debe aceptar y funcionar sobre cualquier grafo utilizando la estructura que deseen los estudiantes
-Se debe solicitar únicamente los requisitos de la búsqueda seleccionada según sea el caso
-El código debe comprobar la entrada de los parámetros/nodos independientemente de su capitalización
-Se debe tomar y comparar el tiempo de ejecución de cada algoritmo cuando se selecciona el "modo comparación" y presentar el algoritmo con el mejor tiempo y con la respuesta a la solución de la búsqueda de manera correcta
-Todos los algoritmos deben entregar como salida el resultado de la búsqueda, ya sea el camino recorrido que resuleve el problema o el mensaje de error correspondiente
-'''
 from searchAlgorithms import breadth_first_search, depth_first_search, limited_depth_search, iterative_depth, dijkstra_algorithm_search
 from input_graph import G as graph
 from tools import printRoute, execute_time

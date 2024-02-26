@@ -5,7 +5,7 @@ def execute_time(func, *args):
     start_time = time.time()
     result = func(*args)
     end_time = time.time()
-    print("Execution time: ", end_time - start_time)
+    print("Execution time: ", round(end_time - start_time, 6), " seconds")
     return result
 
 def normalizeGraph(graph_og):

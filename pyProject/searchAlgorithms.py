@@ -1,6 +1,4 @@
 from tools import normalizeGraph
-import time
-
 
 def iterative_depth(graph, start, goal):
     start = start.lower()
