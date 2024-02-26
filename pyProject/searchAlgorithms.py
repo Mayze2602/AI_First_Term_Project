@@ -1,6 +1,4 @@
 from tools import normalizeGraph
-import time
-
 
 def iterative_depth(graph, start, goal):
     start = start.lower()
@@ -53,10 +51,12 @@ def dijkstra_algorithm_search(graphOG, start, end):
     
     return path
 
-def limited_depth_search(graph, start, goal, limit):
+def limited_depth_search(graph, start, goal, limit, visited=None):
     start = start.lower()
     goal = goal.lower()
     graph=normalizeGraph(graph)
+    if visited is None:
+        visited = set()
 
     if start not in graph or goal not in graph:
         return "El nodo de inicio o final no existe."
@@ -65,11 +65,13 @@ def limited_depth_search(graph, start, goal, limit):
         return [start]
     if limit == 0:
         return None
+    visited.add(start)
     for neighbor in graph.neighbors(start):
-        print("Current node: ", neighbor)
-        path = limited_depth_search(graph, neighbor, goal, limit - 1)
-        if path:
-            return [start] + path
+        if neighbor not in visited:
+            print("Current node: ", neighbor)
+            path = limited_depth_search(graph, neighbor, goal, limit - 1, visited)
+            if path:
+                return [start] + path
     return None
 
 def depth_first_search(graph, start, goal,path=None):
