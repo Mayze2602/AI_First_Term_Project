@@ -1,9 +1,5 @@
 import networkx as nx
 import time
-from timeit import Timer
-
-
-import time
 
 def execute_time(func, *args):
     start_time = time.perf_counter()
