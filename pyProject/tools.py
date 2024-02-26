@@ -1,13 +1,17 @@
 import networkx as nx
 import time
+from timeit import Timer
 
+
+import time
 
 def execute_time(func, *args):
-    start_time = time.time()
+    start_time = time.perf_counter()
     result = func(*args)
-    end_time = time.time()
-    print("Execution time: ", round(end_time - start_time, 6), " seconds")
-    return result
+    end_time = time.perf_counter()
+    execution_time = end_time - start_time
+    print("Tiempo de ejecución: ", round(execution_time, 6), "segundos.")
+    return result, execution_time
 
 
 def normalizeGraph(graph_og):
@@ -24,9 +28,9 @@ def printRoute(route):
     if type(route) == str:
         print(route)
     elif route == None:
-        print("Route not possible.")
+        print("Ruta no posible.")
     else:
-        print("Route: ", end="")
+        print("Ruta: ", end="")
         for i in range(len(route)):
             route[i] = route[i].title()
             print(route[i], end="")

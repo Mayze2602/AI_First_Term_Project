@@ -131,24 +131,49 @@ def main():
             print("<==============================================>")
             start = input("Ingrese el nodo de inicio: ")
             end = input("Ingrese el nodo de destino: ")
+            times = {}
             print("Búsqueda a lo ancho")
-            printRoute(execute_time(breadth_first_search, graph, start, end))
+            path, execTime = execute_time(
+                breadth_first_search, graph, start, end)
+            printRoute(path)
+            if type(path) == list:
+                times["Búsqueda a lo ancho"] = execTime
             print("<==============================================>")
             print("Búsqueda por profundidad")
-            printRoute(execute_time(depth_first_search, graph, start, end))
+            path, execTime = execute_time(
+                depth_first_search, graph, start, end)
+            printRoute(path)
+            if type(path) == list:
+                times["Búsqueda por profundidad"] = execTime
             print("<==============================================>")
             limit = int(input("Ingrese el límite: "))
             print("Búsqueda por profundidad con limite")
-            printRoute(execute_time(
-                limited_depth_search, graph, start, end, limit))
+            path, execTime = execute_time(
+                limited_depth_search, graph, start, end, limit)
+            printRoute(path)
+            if type(path) == list:
+                times["Búsqueda por profundidad con limite"] = execTime
             print("<==============================================>")
             print("Búsqueda por profundidad iterativa")
-            printRoute(execute_time(iterative_depth, graph, start, end))
+            path, execTime = execute_time(iterative_depth, graph, start, end)
+            printRoute(path)
+            if type(path) == list:
+                times["Búsqueda por profundidad iterativa"] = execTime
             print("<==============================================>")
             print("Dikjstra")
-            printRoute(execute_time(
-                dijkstra_algorithm_search, graph, start, end))
+            path, execTime = execute_time(
+                dijkstra_algorithm_search, graph, start, end)
+            printRoute(path)
+            if type(path) == list:
+                times["Dikjstra"] = execTime
             print("<==============================================>")
+            if times:
+                print("Ranking de algoritmos:")
+                # sort the dictionary by value from fastest to slowest
+                num = 1
+                for key, value in sorted(times.items(), key=lambda item: item[1]):
+                    print(f"\t{num}.- {key}: {value} segundos.")
+                    num += 1
             clear()
         elif opcion == 7:
             break
