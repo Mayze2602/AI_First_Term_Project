@@ -24,6 +24,7 @@ def dijkstra_algorithm_search(graphOG, start, end):
     current_node = start
     visited = set()
     while current_node != end:
+        print("Current node: ", current_node)
         visited.add(current_node)
         destinations = graph[current_node]
         weight_to_current_node = shortest_path[current_node][1]
@@ -67,6 +68,7 @@ def limited_depth_search(graph, start, goal, limit, visited=None):
     visited.add(start)
     for neighbor in graph.neighbors(start):
         if neighbor not in visited:
+            print("Current node: ", neighbor)
             path = limited_depth_search(graph, neighbor, goal, limit - 1, visited)
             if path:
                 return [start] + path
@@ -86,6 +88,7 @@ def depth_first_search(graph, start, goal,path=None):
         return path
     
     for neighbor in graph.neighbors(start):
+        print("Current node: ", neighbor)
         if neighbor not in path:
             new_path = depth_first_search(graph, neighbor, goal, path.copy())
             if new_path is not None:
@@ -101,6 +104,7 @@ def breadth_first_search(graph, start, goal):
         return "El nodo de inicio o final no existe."
     queue = [[start]]
     while queue:
+        print("Current node: ", queue[0][-1])
         path = queue.pop(0)
         node = path[-1]
         if node == goal:
