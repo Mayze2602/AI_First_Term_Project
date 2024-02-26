@@ -25,26 +25,22 @@ def iterative_depth(graph, start, goal, step_by_step=False):
         print("No se encontró un camino dentro de los límites de profundidad dados.")
     return None
 
-
-def dijkstra_algorithm_search(graph, start, end, step_by_step=False):
+def dijkstra_algorithm_search(graph, start, goal, step_by_step=False):
     start = start.lower()
-    end = end.lower()
-    graph = normalizeGraph(graph)
+    goal = goal.lower()
+    graph=normalizeGraph(graph)
     
-    if start not in graph or end not in graph:
+    if start not in graph or goal not in graph:
         return "El nodo de inicio o final no existe."
     if step_by_step:
-        print(f"{start.title()} y {end.title()} están en el grafo.")
+        print(f"{start.title()} y {goal.title()} están en el grafo.")
         
     
     shortest_path = {start: (None, 0)}
     current_node = start
     visited = set()
-    
-    while current_node != end:
-        if step_by_step:
-            print("Nodo actual:", current_node.title())
-        
+    while current_node != goal:
+        print("Current node: ", current_node)
         visited.add(current_node)
         destinations = graph[current_node]
         weight_to_current_node = shortest_path[current_node][1]
