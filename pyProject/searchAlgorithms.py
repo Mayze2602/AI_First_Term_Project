@@ -40,7 +40,7 @@ def dijkstra_algorithm_search(graph, start, goal, step_by_step=False):
     current_node = start
     visited = set()
     while current_node != goal:
-        print("Current node: ", current_node)
+        print("Nodo actual: ", current_node)
         visited.add(current_node)
         destinations = graph[current_node]
         weight_to_current_node = shortest_path[current_node][1]
@@ -77,35 +77,35 @@ def dijkstra_algorithm_search(graph, start, goal, step_by_step=False):
     return path
 
 
-def limited_depth_search(graph, start, goal, limit, step_by_step=False,visited=None ):
+def limited_depth_search(graph, start, goal, limit, step_by_step=False, visited=None):
     start = start.lower()
     goal = goal.lower()
     graph = normalizeGraph(graph)
-    
+
     if start not in graph or goal not in graph:
         return "El nodo de inicio o final no existe."
     if step_by_step:
         print(f"{start.title()} y {goal.title()} están en el grafo con un límite de profundidad de {limit}.")
-    
+
     if visited is None:
         visited = set()
         if step_by_step:
             print("Nodos visitados inicialmente: Ninguno")
-    
+
     if start == goal:
         if step_by_step:
             print("Se encontró el camino:", start.title())
         return [start]
-    
+
     if limit <= 0:
         if step_by_step:
             print("Límite de profundidad alcanzado sin encontrar el objetivo.")
         return None
-    
+
     visited.add(start)
     if step_by_step:
         print("Visitando:", start.title(), "con límite restante:", limit)
-    
+
     for neighbor in graph.neighbors(start):
         if neighbor not in visited:
             if step_by_step:
@@ -113,9 +113,12 @@ def limited_depth_search(graph, start, goal, limit, step_by_step=False,visited=N
             path = limited_depth_search(graph, neighbor, goal, limit-1, step_by_step, visited)
             if path:
                 return [start] + path
-    
+
     if step_by_step and start == list(visited)[0]:
         print("No se encontró un camino desde el nodo inicial con el límite de profundidad proporcionado.")
+    else:
+        if step_by_step:
+            print("Retrocediendo desde:", start.title())
     return None
 
 
@@ -147,6 +150,9 @@ def depth_first_search(graph, start, goal, step_by_step=False, path=None):
     
     if step_by_step and start == path[0]:
         print("No se encontró un camino desde el nodo inicial.")
+    else:
+        if step_by_step:
+            print("Retrocediendo desde:", start.title())
     return None
 
 
